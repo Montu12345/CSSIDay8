@@ -27,8 +27,6 @@ function setup() {
 function draw() {
   background(0, 0, 0);
 
-  //printing grass
-
   //printing and dropping rain
   for (let i = 0; i < rain.length; i++) {
     rain[i].show();
@@ -42,6 +40,8 @@ function draw() {
       }
     }*/
   }
+  
+  //printing grass
   for (let i = 0; i < grass.length; i++) {
     grass[i].show();
   }
@@ -49,6 +49,7 @@ function draw() {
   grassGrow(grass);
 }
 
+//class for rain
 class RainDrop {
   constructor() {
     this.x = random(width);
@@ -56,12 +57,15 @@ class RainDrop {
     this.d = random(20, 30);
     this.fallSpeed = random(1, 7);
   }
+  
+  //show the raindrop
   show() {
     noStroke();
     fill(180, 80, 80);
     arc(this.x, this.y, this.d, this.d, QUARTER_PI, PI - QUARTER_PI);
-    //ellipse(, , this.d);
   }
+  
+  //make the raindrop drop
   drip() {
     this.y += this.fallSpeed;
     if (this.y > height) {
@@ -82,6 +86,7 @@ class RainDrop {
   }
 }
 
+//class for grass
 class Grass {
   constructor(x1) {
     this.x1 = x1;
@@ -91,6 +96,8 @@ class Grass {
     this.x3 = x1 + 2;
     this.y3 = height;
   }
+  
+  //print the grass
   show() {
     noStroke();
     fill(113, 100, 100);
@@ -98,6 +105,7 @@ class Grass {
   }
 }
 
+//makes the grass grow taller
 function grassGrow(array) {
   if (asdf % 200 == 0) {
     for (let p = 0; p < array.length; p++) {
